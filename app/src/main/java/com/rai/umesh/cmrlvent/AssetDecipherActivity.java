@@ -46,7 +46,7 @@ public class AssetDecipherActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            Log.i("value", jsonResponse.toString());
+                            //Log.i("value", jsonResponse.toString());
                             boolean success = jsonResponse.getJSONObject("data").getBoolean("success");
                             String corridor = jsonResponse.getJSONObject("data").getString("corridor");
                             String station = jsonResponse.getJSONObject("data").getString("station");

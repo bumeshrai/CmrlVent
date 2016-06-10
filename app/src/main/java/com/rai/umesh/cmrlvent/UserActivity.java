@@ -29,6 +29,15 @@ public class UserActivity extends AppCompatActivity {
         final TextView tvAssetcode = (TextView) findViewById(R.id.tvAssetcode);
         final Button btLogin = (Button) findViewById(R.id.btLogin);
 
+        GPSTracker gps = new GPSTracker(this);
+        if(gps.canGetLocation()){
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+            Log.i("value",  "getLatitude: " + latitude+"\n" + "getLongitude: " + longitude);
+        } else {
+            Log.i("value",  "get location failed: ");
+        }
+
         tvAssetcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
