@@ -16,16 +16,22 @@ public class UserDataActivity extends AppCompatActivity {
         String userid = intent.getStringExtra("userid");
         String username = intent.getStringExtra("username");
         String organisation = intent.getStringExtra("organisation");
+        String latitude = intent.getStringExtra("latitude");
+        String longitude = intent.getStringExtra("longitude");
         String auth_key = intent.getStringExtra("auth_key");
 
         TextView tvUsername = (TextView) findViewById(R.id.tvUsername);
         TextView tvUserid = (TextView) findViewById(R.id.tvUserid);
         TextView tvContractor = (TextView) findViewById(R.id.tvContractor);
+        TextView tvLatitude = (TextView) findViewById(R.id.tvLatitude);
+        TextView tvLongitude = (TextView) findViewById(R.id.tvLongitude);
         TextView tvAccesskey = (TextView) findViewById(R.id.tvAccesskey);
 
         tvUsername.setText("Username: "+ username);
         tvUserid.setText("User ID: "+ userid);
         tvContractor.setText("Contractor: "+ organisation);
+        tvLatitude.setText("Latitude: "+latitude);
+        tvLongitude.setText("Longitude: "+longitude);
         tvAccesskey.setText("Key: "+ auth_key);
 
     }

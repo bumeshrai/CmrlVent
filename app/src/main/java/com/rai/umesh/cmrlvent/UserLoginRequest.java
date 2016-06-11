@@ -16,11 +16,13 @@ public class UserLoginRequest  extends StringRequest {
     private static final String LOGIN_REQUEST_URL = "http://cmrlvent.co.in/assetMaint/api/web/user/login";
     private Map<String, String> params;
 
-    public UserLoginRequest(String username, String password, Response.Listener<String> listener) {
+    public UserLoginRequest(String username, String password,  String latitude, String longitude ,Response.Listener<String> listener) {
         super(Request.Method.POST, LOGIN_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("username", username);
         params.put("password", password);
+        params.put("latitude", latitude);
+        params.put("longitude", longitude);
     }
 
     @Override

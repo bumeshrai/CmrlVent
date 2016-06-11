@@ -36,6 +36,9 @@ public class UserActivity extends AppCompatActivity
 
     private GoogleApiClient mGoogleApiClient;
     private Location mLocation;
+    private String latitude = "";
+    private String longitude = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +88,8 @@ public class UserActivity extends AppCompatActivity
                                 intent.putExtra("userid", userid);
                                 intent.putExtra("username", username);
                                 intent.putExtra("organisation", organisation);
+                                intent.putExtra("latitude", latitude);
+                                intent.putExtra("longitude", longitude);
                                 intent.putExtra("auth_key", auth_key);
                                 UserActivity.this.startActivity(intent);
                             } else {
@@ -99,9 +104,10 @@ public class UserActivity extends AppCompatActivity
                         }
                     }
                 };
-                UserLoginRequest loginRequest = new UserLoginRequest(username, password, responseListener);
+                UserLoginRequest loginRequest = new UserLoginRequest(username, password, latitude, longitude,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(UserActivity.this);
                 queue.add(loginRequest);
+                Log.i("values", "username: "+username+"/"+password+" location: "+latitude+"/"+longitude );
             }
         });
     }
@@ -154,8 +160,11 @@ public class UserActivity extends AppCompatActivity
         if (mLocation != null) {
             final TextView tvLatitude = (TextView) findViewById(R.id.tvLatitude);
             final TextView tvLongitude = (TextView) findViewById(R.id.tvLongitude);
-            tvLatitude.setText("Latitude: " + String.valueOf(mLocation.getLatitude()));
-            tvLongitude.setText("Longitude: " +String.valueOf(mLocation.getLongitude()));
+            latitude = String.valueOf(mLocation.getLatitude());
+            longitude = String.valueOf(mLocation.getLongitude());
+            tvLatitude.setText("Latitude: " + latitude);
+            tvLongitude.setText("Longitude: " + longitude);
+            Log.i("value", "Latitude: "+latitude+" Longitude: "+longitude);
         } else {
             displayLocationSettingsRequest(UserActivity.this);
         }
